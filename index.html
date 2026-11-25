@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>O presente do meu amor 💙</title>
+
+<style>
+
+body{
+    margin:0;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+}
+
+.container{
+    position:relative;
+}
+
+svg{
+    width:min(90vw,550px);
+    height:auto;
+}
+
+.led{
+    fill:#4da6ff;
+
+    animation: brilho 3s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 0 5px #4da6ff)
+        drop-shadow(0 0 10px #3399ff)
+        drop-shadow(0 0 20px #0066ff);
+}
+
+@keyframes brilho{
+    0%{
+        opacity:0.75;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0.75;
+    }
+}
+
+.texto{
+
+    position:absolute;
+
+    left:50%;
+    top:63%;
+
+    transform:translate(-50%,-50%);
+
+    color:#d6ebff;
+
+    font-size:clamp(22px,4vw,40px);
+
+    font-weight:bold;
+
+    text-shadow:
+        0 0 10px #66b3ff,
+        0 0 20px #0066ff,
+        0 0 35px #0066ff;
+
+    white-space:nowrap;
+}
+
+.botao{
+
+    position:absolute;
+
+    left:50%;
+    top:78%;
+
+    transform:translateX(-50%);
+
+    padding:15px 28px;
+
+    border:none;
+    border-radius:30px;
+
+    background:#3399ff;
+    color:white;
+
+    font-size:18px;
+    cursor:pointer;
+
+    box-shadow:
+        0 0 10px #3399ff,
+        0 0 20px #0066ff;
+}
+
+.botao:hover{
+    background:#5cadff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="texto">
+Eu te amo muito 💙
+</div>
+
+<button class="botao" onclick="window.location.href='carta.html'">
+💌 Abrir Carta
+</button>
+
+<svg viewBox="0 0 600 600" id="heart"></svg>
+
+</div>
+
+<script>
+
+const svg = document.getElementById("heart");
+
+for(let t = 0; t < Math.PI * 2; t += 0.16){
+
+    let x = 16 * Math.pow(Math.sin(t),3);
+
+    let y =
+        13*Math.cos(t)
+        -5*Math.cos(2*t)
+        -2*Math.cos(3*t)
+        -Math.cos(4*t);
+
+    x = x * 14 + 300;
+    y = -y * 14 + 260;
+
+    const led =
+    document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "circle"
+    );
+
+    led.setAttribute("cx",x);
+    led.setAttribute("cy",y);
+    led.setAttribute("r","8");
+    led.setAttribute("class","led");
+
+    svg.appendChild(led);
+}
+
+</script>
+
+</body>
+</html>
